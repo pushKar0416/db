@@ -1,0 +1,23 @@
+CREATE OR REPLACE PROCEDURE display_high_salary_employees AS
+      CURSOR emp_cursor IS
+        SELECT first_name, last_name
+        FROM emp_tbl
+        WHERE salary > 1000;
+      emp_rec emp_cursor%ROWTYPE;
+   BEGIN
+     OPEN emp_cursor;
+     LOOP
+      FETCH emp_cursor INTO emp_rec;
+       EXIT WHEN emp_cursor%NOTFOUND;
+       DBMS_OUTPUT.PUT_LINE('First Name: ' || emp_rec.first_name || ', Last Name: ' || emp_rec.last_name);
+     END LOOP;
+     CLOSE emp_cursor;
+   END;
+   /
+   
+   
+   SET SERVEROUTPUT ON;
+BEGIN
+    display_high_salary_employees;
+   END;
+  /
