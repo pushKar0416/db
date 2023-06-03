@@ -1,0 +1,16 @@
+CREATE FUNCTION odd_even(a INT) RETURNS VARCHAR(20)
+   BEGIN
+     DECLARE result VARCHAR(20);
+ 
+     IF a % 2 = 0 THEN
+        SET result = 'even';
+      ELSE
+        SET result = 'odd';
+      END IF;
+ 
+     RETURN result;
+   END;
+ /
+ 
+ 
+ SELECT odd_even(10) AS number_type;
