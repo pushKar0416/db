@@ -1,0 +1,18 @@
+CREATE OR REPLACE PROCEDURE pushkarproc2(
+      p_sid IN INT,
+      p_name OUT VARCHAR2
+    ) AS
+    BEGIN
+      SELECT name INTO p_name
+      FROM student
+      WHERE sid = p_sid;
+    END;
+   /
+   
+       v_sid INT := 1;
+      v_name VARCHAR2(100);
+    BEGIN
+      pushkarproc2(v_sid, v_name);
+      DBMS_OUTPUT.PUT_LINE('Name: ' || v_name);
+    END;
+  
